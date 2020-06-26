@@ -340,6 +340,11 @@ make_image_root() {
     fi
 }
 
+customize_desktopfs() {
+	bash /root/customize.sh
+	rm /root/customize.sh
+}
+
 make_image_desktop() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         msg "Prepare [Desktop installation] (desktopfs)"
@@ -362,6 +367,8 @@ make_image_desktop() {
         reset_pac_conf "${path}"
 
         seed_snaps ${path}
+		
+		customize_desktopfs
 
         umount_fs
         clean_up_image "${path}"
