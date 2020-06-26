@@ -778,6 +778,7 @@ is_valid_arch_iso(){
 is_valid_branch(){
     case $1 in
         'stable'|'stable-staging'|'testing'|'unstable') return 0 ;;
+		'x32-stable'|'x32-testing'|'x32-unstable') return 0 ;;
         *) return 1 ;;
     esac
 }
